@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50611BB3266D908E00581EDA /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50611BB1266D908E00581EDA /* CitiesViewController.swift */; };
+		50611BB4266D908E00581EDA /* CitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50611BB2266D908E00581EDA /* CitiesViewController.xib */; };
 		509771FA266B898B00FAF4EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509771F9266B898B00FAF4EC /* AppDelegate.swift */; };
-		509771FE266B898B00FAF4EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509771FD266B898B00FAF4EC /* ViewController.swift */; };
 		50977203266B898C00FAF4EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50977202266B898C00FAF4EC /* Assets.xcassets */; };
 		50977206266B898C00FAF4EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50977204266B898C00FAF4EC /* LaunchScreen.storyboard */; };
 		50977211266B898C00FAF4EC /* BackbaseTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50977210266B898C00FAF4EC /* BackbaseTaskTests.swift */; };
@@ -33,9 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50611BB1266D908E00581EDA /* CitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewController.swift; sourceTree = "<group>"; };
+		50611BB2266D908E00581EDA /* CitiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CitiesViewController.xib; sourceTree = "<group>"; };
 		509771F6266B898B00FAF4EC /* BackbaseTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackbaseTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		509771F9266B898B00FAF4EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		509771FD266B898B00FAF4EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		50977202266B898C00FAF4EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50977205266B898C00FAF4EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50977207266B898C00FAF4EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +74,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50611BA1266D8F9800581EDA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				50611BA5266D8FBF00581EDA /* Storyboard */,
+				50611BA2266D8FA000581EDA /* Assets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		50611BA2266D8FA000581EDA /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				50977202266B898C00FAF4EC /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		50611BA3266D8FA900581EDA /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				50611BA4266D8FB300581EDA /* AppDelegate */,
+				50611BAB266D905000581EDA /* Cities Module */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		50611BA4266D8FB300581EDA /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				509771F9266B898B00FAF4EC /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		50611BA5266D8FBF00581EDA /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				50977204266B898C00FAF4EC /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		50611BA6266D900A00581EDA /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				50611BA7266D900F00581EDA /* Plist */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		50611BA7266D900F00581EDA /* Plist */ = {
+			isa = PBXGroup;
+			children = (
+				50977207266B898C00FAF4EC /* Info.plist */,
+			);
+			path = Plist;
+			sourceTree = "<group>";
+		};
+		50611BAB266D905000581EDA /* Cities Module */ = {
+			isa = PBXGroup;
+			children = (
+				50611BAC266D905E00581EDA /* View */,
+			);
+			path = "Cities Module";
+			sourceTree = "<group>";
+		};
+		50611BAC266D905E00581EDA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				50611BAD266D906300581EDA /* ViewController */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		50611BAD266D906300581EDA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				50611BB1266D908E00581EDA /* CitiesViewController.swift */,
+				50611BB2266D908E00581EDA /* CitiesViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		509771ED266B898B00FAF4EC = {
 			isa = PBXGroup;
 			children = (
@@ -95,11 +180,9 @@
 		509771F8266B898B00FAF4EC /* BackbaseTask */ = {
 			isa = PBXGroup;
 			children = (
-				509771F9266B898B00FAF4EC /* AppDelegate.swift */,
-				509771FD266B898B00FAF4EC /* ViewController.swift */,
-				50977202266B898C00FAF4EC /* Assets.xcassets */,
-				50977204266B898C00FAF4EC /* LaunchScreen.storyboard */,
-				50977207266B898C00FAF4EC /* Info.plist */,
+				50611BA6266D900A00581EDA /* Configurations */,
+				50611BA1266D8F9800581EDA /* Resources */,
+				50611BA3266D8FA900581EDA /* Modules */,
 			);
 			path = BackbaseTask;
 			sourceTree = "<group>";
@@ -226,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50977206266B898C00FAF4EC /* LaunchScreen.storyboard in Resources */,
+				50611BB4266D908E00581EDA /* CitiesViewController.xib in Resources */,
 				50977203266B898C00FAF4EC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,8 +335,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				509771FE266B898B00FAF4EC /* ViewController.swift in Sources */,
 				509771FA266B898B00FAF4EC /* AppDelegate.swift in Sources */,
+				50611BB3266D908E00581EDA /* CitiesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,7 +506,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PL8RT6LF9;
-				INFOPLIST_FILE = BackbaseTask/Info.plist;
+				INFOPLIST_FILE = BackbaseTask/Configurations/Plist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -441,7 +525,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PL8RT6LF9;
-				INFOPLIST_FILE = BackbaseTask/Info.plist;
+				INFOPLIST_FILE = BackbaseTask/Configurations/Plist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
