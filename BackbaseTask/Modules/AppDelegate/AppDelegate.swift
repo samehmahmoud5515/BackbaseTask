@@ -10,11 +10,22 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        
+        configureRootViewController()
         
         return true
+    }
+    
+    func configureRootViewController() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let rootViewController = CitiesViewController()
+        let rootNavigationController = UINavigationController(rootViewController: rootViewController)
+        rootNavigationController.setNavigationBarHidden(true, animated: false)
+        window?.rootViewController = rootNavigationController
+        window?.makeKeyAndVisible()
     }
     
     
