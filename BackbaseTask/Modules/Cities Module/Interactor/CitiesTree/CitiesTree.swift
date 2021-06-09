@@ -9,8 +9,8 @@ import Foundation
 
 class CityTreeNode {
     var key: String = ""
-    var city: [City] = [City]()
-    var children: [CityTreeNode] = [CityTreeNode]()
+    var city: [City] = []
+    var children: [CityTreeNode] = []
 }
 
 class CitiesTree {
