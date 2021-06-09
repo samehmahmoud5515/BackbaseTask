@@ -8,24 +8,63 @@
 import Foundation
 
 class CitiesPresenter {
+        
+    var cities: [City] = []
     
-    weak var view: CitiesViewControllerProtocol?
-    
-    init(view: CitiesViewControllerProtocol) {
+    private weak var view: CitiesViewControllerProtocol?
+    private let interactor: CitiesInteractorProtocol
+    private let router: CitiesRouterProtocol
+
+    // MARK: - Lifecycle -
+
+    init(
+        view: CitiesViewControllerProtocol,
+        interactor: CitiesInteractorProtocol,
+        wireframe: CitiesRouterProtocol
+    ) {
         self.view = view
+        self.interactor = interactor
+        self.router = wireframe
     }
 }
 
 extension CitiesPresenter: CitiesPresenterProtocol {
+    
     func fetchCities() {
-        
+        view?.startLoadingIndicator()
+        interactor.loadAllCities { [weak self] cities in
+            guard let cities = cities
+                else { return }
+            self?.cities = cities
+            
+            // Reload Data in MainThread
+            DispatchQueue.main.async {
+                self?.view?.stopLoadingIndicator()
+                self?.view?.reloadData()
+            }
+        }
     }
     
-    func getCities() {
-        
+    func searchCities(qurey: String) {
+        if !interactor.isSearchReady {
+            view?.startLoadingIndicator()
+        }
+        interactor.searchAllCities(qurey: qurey) { cities in
+            guard let cities = cities
+                else { return }
+            self.cities = cities
+            DispatchQueue.main.async {
+                self.view?.reloadData()
+                self.view?.stopLoadingIndicator()
+            }
+        }
+    }    
+    
+    func getCity(for index: Int) -> City {
+        return cities[index]
     }
     
     func getCitiesCount() -> Int {
-        return 10
+        return cities.count
     }
 }
