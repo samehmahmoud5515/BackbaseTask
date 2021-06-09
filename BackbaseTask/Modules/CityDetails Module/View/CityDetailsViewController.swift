@@ -8,24 +8,19 @@
 import UIKit
 import MapKit
 
-final class CityDetailsViewController: UIViewController {
+final class CityDetailsViewController: UIViewController, CityDetailsViewControllerProtocol {
 
     // MARK: - Public properties -
     @IBOutlet weak var mapView: MKMapView!
     
     var presenter: CityDetailsPresenterProtocol!
 
-    // MARK: - Lifecycle -
-
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        
+        presenter.viewDidLoad()
     }
 
-}
-
-extension CityDetailsViewController: CityDetailsViewControllerProtocol {
 }
 
 // MARK: - UI Setup
