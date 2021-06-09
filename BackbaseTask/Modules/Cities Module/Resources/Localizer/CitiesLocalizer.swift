@@ -10,4 +10,7 @@ import Foundation
 enum CitiesLocalizer: String {
     case title = "Cities"
     case search = "Search"
+    case coordinates = "Coordinate"
+    case longitude = "Longitude"
+    case latitude = "Latitude"
 }
