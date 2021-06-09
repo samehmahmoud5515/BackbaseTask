@@ -14,10 +14,9 @@ protocol CitiesViewControllerProtocol: class {
 }
 
 protocol CitiesPresenterProtocol: CitiesPresenterDatasourceProtocol {
-    //func setupCellUI(_ cell: HomePostsCellProtocol, index: Int)
-    //func didTappedCell(at index: Int)
     func fetchCities()
     func searchCities(qurey: String)
+    func navigateToCityDetails(with index: Int)
 }
 
 protocol CitiesPresenterDatasourceProtocol {
@@ -26,7 +25,7 @@ protocol CitiesPresenterDatasourceProtocol {
 }
 
 protocol CitiesRouterProtocol: AnyObject {
-    //func go(to )
+    func goTo(route: CitiesRouter.CitiesRoute)
 }
 
 protocol CitiesInteractorProtocol: AnyObject {
