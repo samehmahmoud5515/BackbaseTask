@@ -41,6 +41,7 @@ extension CitiesViewController {
         setupNaviagtionBarUI()
         addSearchBarToNaviagtionBar()
         registerTableViewCell()
+        addTableViewFooterView()
     }
     
     private func setupNaviagtionBarUI() {
@@ -63,6 +64,10 @@ extension CitiesViewController {
     private func registerTableViewCell() {
         let nib = UINib(nibName: "\(CityTableViewCell.self)", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "\(CityTableViewCell.self)")
+    }
+    
+    private func addTableViewFooterView() {
+        tableView.tableFooterView = UIView()
     }
 }
 
