@@ -71,6 +71,25 @@ class CitiesTree {
         return cities
     }
     
+    func getFirstCities(count: Int) -> [City] {
+        var cities = [City]()
+       
+        cities.append(contentsOf: root.city)
+      
+        var counter = root.city.count
+        for child in root.children {
+            let children = getCities(for: child)
+            cities.append(contentsOf: children)
+            counter += children.count
+
+            if counter >= count {
+                break
+            }
+        }
+        
+        return cities
+    }
+    
     fileprivate func getCities(keyIndex: Int = 0, prefix: String, parent: CityTreeNode) -> [City] {
         if prefix.count == keyIndex {
             return getCities(for: parent)
