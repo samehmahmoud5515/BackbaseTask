@@ -5,12 +5,12 @@
 //  Created by SAMEH on 08/06/2021.
 //
 
-import Foundation
+import MapKit.MKFoundation
 
 class City: Decodable {
     var country, name: String
     var id: Int
-    var coord: Coord
+    var coord: Coordinate
 
     enum CodingKeys: String, CodingKey {
         case country, name
@@ -19,7 +19,7 @@ class City: Decodable {
     }
     
     // MARK: - Coord
-    struct Coord: Decodable, Hashable {
+    struct Coordinate: Decodable, Hashable {
         var lon, lat: Double
     }
 }
@@ -36,3 +36,9 @@ extension City: Comparable {
 }
 
 typealias CitiesResponse = [City]
+
+extension City.Coordinate {
+    var toCLLocationCoordinate2D: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: lat, longitude: lon)
+    }
+}
