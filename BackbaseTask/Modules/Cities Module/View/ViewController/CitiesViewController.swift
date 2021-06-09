@@ -9,19 +9,30 @@ import UIKit
 
 class CitiesViewController: UIViewController {
     
-    // MARK:- Outlets
+    // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    // MARK:- Attribuites
+    // MARK: - Attribuites
     var presenter: CitiesPresenterProtocol!
 
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         presenter.fetchCities()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
 }
 
 extension CitiesViewController {
@@ -42,9 +53,9 @@ extension CitiesViewController {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.showsCancelButton = false
         searchController.searchBar.placeholder = CitiesLocalizer.search.rawValue
-        searchController.searchBar.tintColor = .white
         searchController.searchBar.delegate = self
         searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
     }
@@ -58,6 +69,18 @@ extension CitiesViewController {
 extension CitiesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presenter.searchCities(qurey: searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        presenter.searchCities(qurey: "")
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
     }
 }
 
@@ -87,6 +110,6 @@ extension CitiesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        presenter.navigateToCityDetails(with: indexPath.row)
     }
 }
