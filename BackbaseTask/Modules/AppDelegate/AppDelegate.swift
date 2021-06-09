@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let rootViewController = CitiesRouter().viewController
         let rootNavigationController = UINavigationController(rootViewController: rootViewController)
-        rootNavigationController.setNavigationBarHidden(true, animated: false)
+        rootNavigationController.setNavigationBarHidden(false, animated: false)
         window?.rootViewController = rootNavigationController
         window?.makeKeyAndVisible()
     }
