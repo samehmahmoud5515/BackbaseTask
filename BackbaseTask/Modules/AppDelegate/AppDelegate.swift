@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func configureRootViewController() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let rootViewController = CitiesViewController()
+        let rootViewController = CitiesRouter().viewController
         let rootNavigationController = UINavigationController(rootViewController: rootViewController)
         rootNavigationController.setNavigationBarHidden(true, animated: false)
         window?.rootViewController = rootNavigationController
