@@ -16,15 +16,13 @@ final class LoadCitiesOperation: Operation {
         guard !isCancelled else { return }
 
         guard let citiesData = loadJson(),
-              var citiesResponse = decodeJson(data: citiesData)
+              let citiesResponse = decodeJson(data: citiesData)
             else { return }
-        
-        citiesResponse.sort()
         response = citiesResponse
         print("LoadCitiesOperation Done \(Date())")
     }
     
-    func loadJson() -> Data? {
+    private func loadJson() -> Data? {
         do {
             guard let url = Bundle.main.url(forResource: "cities", withExtension: "json")
                 else { return nil }
@@ -34,7 +32,7 @@ final class LoadCitiesOperation: Operation {
         return nil
     }
     
-    func decodeJson(data: Data) -> CitiesResponse? {
+    private func decodeJson(data: Data) -> CitiesResponse? {
         do {
             return try JSONDecoder().decode(CitiesResponse.self, from: data)
         } catch {
