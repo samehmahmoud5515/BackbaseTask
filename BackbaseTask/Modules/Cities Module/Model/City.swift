@@ -7,7 +7,7 @@
 
 import MapKit.MKFoundation
 
-class City: Decodable {
+struct City: Decodable {
     var country, name: String
     var id: Int
     var coord: Coordinate
