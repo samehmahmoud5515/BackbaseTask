@@ -11,9 +11,11 @@ protocol CityDetailsRouterProtocol {
 }
 
 protocol CityDetailsViewControllerProtocol: AnyObject {
+    func setupUI()
 }
 
 protocol CityDetailsPresenterProtocol {
+    func viewDidLoad()
     func getCityCoordinate() -> City.Coordinate
     func getCityTitle() -> String
 }

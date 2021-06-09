@@ -25,6 +25,11 @@ final class CityDetailsPresenter {
         self.router = router
         self.city = city
     }
+    
+    // MARK: - Life cycle
+    func viewDidLoad() {
+        view?.setupUI()
+    }
 }
 
 // MARK: - Extensions -
