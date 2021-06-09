@@ -30,8 +30,12 @@ extension CitiesRouter: CitiesRouterProtocol {
     func goTo(route: CitiesRoute) {
         switch route {
         case .cityDetails(let city):
-            let cityDetailsViewController = CityDetailsRouter(city: city).viewController
-            viewController.navigationController?.pushViewController(cityDetailsViewController, animated: true)
+            navigateToCityDetails(city)
         }
+    }
+    
+    func navigateToCityDetails(_ city: City) {
+        let cityDetailsViewController = CityDetailsRouter(city: city).viewController
+        viewController.navigationController?.pushViewController(cityDetailsViewController, animated: true)
     }
 }

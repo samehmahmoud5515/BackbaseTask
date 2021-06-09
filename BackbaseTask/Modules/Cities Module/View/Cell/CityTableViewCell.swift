@@ -14,7 +14,7 @@ class CityTableViewCell: UITableViewCell {
 }
 
 // MARK: - Update UI
-extension CityTableViewCell {
+extension CityTableViewCell: CityCellViewProtocol {
     func updateUI(with city: City) {
         updateCityTitleLabel(cityName: city.name, countryName: city.country)
         updateCoordinateLabel(coordinate: city.coord)

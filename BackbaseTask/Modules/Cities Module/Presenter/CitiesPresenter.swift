@@ -7,15 +7,13 @@
 
 import Foundation
 
-class CitiesPresenter {
+class CitiesPresenter: CitiesPresenterProtocol {
         
     var cities: [City] = []
     
     private weak var view: CitiesViewControllerProtocol?
     private let interactor: CitiesInteractorProtocol
     private let router: CitiesRouterProtocol
-
-    // MARK: - Lifecycle -
 
     init(
         view: CitiesViewControllerProtocol,
@@ -26,10 +24,19 @@ class CitiesPresenter {
         self.interactor = interactor
         self.router = wireframe
     }
+    
+    // MARK: - Lifecycle
+    func viewDidLoad() {
+        view?.setupUI()
+        fetchCities()
+    }
+    
+    func viewWillAppear() {
+        view?.setupNaviagtionController()
+    }
 }
 
-extension CitiesPresenter: CitiesPresenterProtocol {
-    
+extension CitiesPresenter {
     func fetchCities() {
         view?.startLoadingIndicator()
         interactor.loadAllCities { [weak self] cities in
@@ -45,7 +52,7 @@ extension CitiesPresenter: CitiesPresenterProtocol {
         }
     }
     
-    func searchCities(qurey: String) {
+    func searchTextChanged(wihtQurey qurey: String) {
         if !interactor.isSearchReady {
             view?.startLoadingIndicator()
         }
@@ -58,21 +65,24 @@ extension CitiesPresenter: CitiesPresenterProtocol {
                 self.view?.stopLoadingIndicator()
             }
         }
-    }    
-    
-    func getCity(for index: Int) -> City {
-        return cities[index]
+    }
+}
+
+extension CitiesPresenter {
+    var citiesCount: Int {
+        return cities.count
     }
     
-    func getCitiesCount() -> Int {
-        return cities.count
+    func configure(cityCell cell: CityCellViewProtocol, atIndexPath indexPath: IndexPath) {
+        let city = cities[indexPath.row]
+        cell.updateUI(with: city)
     }
 }
 
 // MARK: - Navigation
 extension CitiesPresenter {
-    func navigateToCityDetails(with index: Int) {
-        let city = cities[index]
+    func cityCell(selectedAt indexPath: IndexPath) {
+        let city = cities[indexPath.row]
         router.goTo(route: .cityDetails(city: city))
     }
 }
