@@ -73,19 +73,37 @@ class CitiesInteractor: CitiesInteractorProtocol {
         
         // If the build tree operation is not finished yet we wait unit it finishes then add search operation
         if let buildTreeOperation = buildTreeQueue.operations.first as? BuildTreeOperation, !buildTreeOperation.isFinished {
-            
+            // update completion block for build tree operation
             buildTreeOperation.completionBlock = {
                 self.tree = buildTreeOperation.tree
                 searchOperation.tree = buildTreeOperation.tree
                 self.searchQueue.addOperation(searchOperation)
             }
         } else {
-            searchQueue.addOperation(searchOperation)
+            if qurey.isEmpty {
+                searchOperation.searchCitiesLimit = .custom(count: 1000)
+                searchQueue.addOperation(searchOperation)
+                getAllCities(completion: completion)
+            } else {
+                searchOperation.searchCitiesLimit = .all
+                searchQueue.addOperation(searchOperation)
+            }
+            
         }
         
         searchOperation.completionBlock = {
             completion(searchOperation.cities)
         }
+    }
+    
+    func getAllCities(completion: @escaping ([City]?) -> Void) {
+        guard let tree = tree else { return }
+        let searchOperation = SearchCitiesOperation(tree: tree, qurey: "")
+        searchOperation.searchCitiesLimit = .all
+        searchOperation.completionBlock = {
+            completion(searchOperation.cities)
+        }
+        searchQueue.addOperation(searchOperation)
     }
 
 }
