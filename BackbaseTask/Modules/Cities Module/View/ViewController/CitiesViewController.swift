@@ -19,40 +19,35 @@ class CitiesViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        presenter.fetchCities()
+        presenter.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .always
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
+        presenter.viewWillAppear()
     }
 }
 
 extension CitiesViewController {
     
     func setupUI() {
-        setupNaviagtionBarUI()
+        setupNavigationBarTitle()
+        setupNaviagtionController()
         addSearchBarToNaviagtionBar()
         registerTableViewCell()
         addTableViewFooterView()
     }
     
-    private func setupNaviagtionBarUI() {
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.prefersLargeTitles = true
+    func setupNavigationBarTitle() {
         navigationItem.title = CitiesLocalizer.title.rawValue
+    }
+    
+    func setupNaviagtionController() {
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func addSearchBarToNaviagtionBar() {
         let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.showsCancelButton = false
         searchController.searchBar.placeholder = CitiesLocalizer.search.rawValue
         searchController.searchBar.delegate = self
         searchController.hidesNavigationBarDuringPresentation = false
@@ -73,11 +68,11 @@ extension CitiesViewController {
 
 extension CitiesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        presenter.searchCities(qurey: searchText)
+        presenter.searchTextChanged(wihtQurey: searchText)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        presenter.searchCities(qurey: "")
+        presenter.searchTextChanged(wihtQurey: "")
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -105,16 +100,17 @@ extension CitiesViewController: CitiesViewControllerProtocol {
 
 extension CitiesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.getCitiesCount()
+        return presenter.citiesCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(CityTableViewCell.self)", for: indexPath) as? CityTableViewCell ?? CityTableViewCell()
-        cell.updateUI(with: presenter.getCity(for: indexPath.row))
+        presenter.configure(cityCell: cell, atIndexPath: indexPath)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.navigateToCityDetails(with: indexPath.row)
+        presenter.cityCell(selectedAt: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

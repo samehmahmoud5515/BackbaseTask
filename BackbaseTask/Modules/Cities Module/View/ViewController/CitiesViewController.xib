@@ -30,20 +30,18 @@
                     </connections>
                 </tableView>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="zzV-Pg-3gr">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                 </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="63t-Q5-xSr" secondAttribute="bottom" id="2c8-Cu-ety"/>
-                <constraint firstItem="zzV-Pg-3gr" firstAttribute="trailing" secondItem="63t-Q5-xSr" secondAttribute="trailing" id="6dS-Dm-xWS"/>
-                <constraint firstItem="zzV-Pg-3gr" firstAttribute="top" secondItem="63t-Q5-xSr" secondAttribute="top" id="Fq3-sR-g28"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="63t-Q5-xSr" secondAttribute="trailing" id="HIw-xK-lKH"/>
-                <constraint firstItem="zzV-Pg-3gr" firstAttribute="leading" secondItem="63t-Q5-xSr" secondAttribute="leading" id="R7P-Ff-ftp"/>
                 <constraint firstItem="63t-Q5-xSr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="RlL-X1-CF0"/>
+                <constraint firstItem="zzV-Pg-3gr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RlY-6T-OM6"/>
+                <constraint firstItem="zzV-Pg-3gr" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ekU-c6-x9S"/>
                 <constraint firstItem="63t-Q5-xSr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="r67-ji-Rav"/>
-                <constraint firstItem="zzV-Pg-3gr" firstAttribute="bottom" secondItem="63t-Q5-xSr" secondAttribute="bottom" id="w3l-Fu-tEB"/>
             </constraints>
             <point key="canvasLocation" x="20" y="96"/>
         </view>
