@@ -68,3 +68,11 @@ extension CitiesPresenter: CitiesPresenterProtocol {
         return cities.count
     }
 }
+
+// MARK: - Navigation
+extension CitiesPresenter {
+    func navigateToCityDetails(with index: Int) {
+        let city = cities[index]
+        router.goTo(route: .cityDetails(city: city))
+    }
+}
