@@ -10,17 +10,18 @@ import Foundation
 class CitiesInteractor: CitiesInteractorProtocol {
     
     var tree: CitiesTree?
+    var isSearchReady: Bool {
+        return tree != nil
+    }
     
     lazy var loadDataQueue: OperationQueue = {
         var queue = OperationQueue()
-        queue.name = "Load Json Queue"
         queue.qualityOfService = .userInitiated
         return queue
     }()
     
     lazy var searchQueue: OperationQueue = {
         var queue = OperationQueue()
-        queue.name = "Download queue"
         queue.qualityOfService = .userInitiated
         queue.maxConcurrentOperationCount = 1
         return queue
@@ -28,7 +29,6 @@ class CitiesInteractor: CitiesInteractorProtocol {
     
     lazy var buildTreeQueue: OperationQueue = {
         var queue = OperationQueue()
-        queue.name = "Build tree queue"
         queue.qualityOfService = .userInitiated
         return queue
     }()
@@ -45,8 +45,10 @@ class CitiesInteractor: CitiesInteractorProtocol {
         sortLoadAdapterOperation.addDependency(loadCitiesOperation)
         sortCitiesOperation.addDependency(sortLoadAdapterOperation)
         
-        sortCitiesOperation.completionBlock = {
-            guard let cities = sortCitiesOperation.cities else { return }
+        sortCitiesOperation.completionBlock = { [weak self] in
+            guard let self = self,
+                  let cities = sortCitiesOperation.cities
+                else { return }
             self.buildTree(with: cities)
             completion(cities)
         }
@@ -57,8 +59,10 @@ class CitiesInteractor: CitiesInteractorProtocol {
     
     func buildTree(with cities: [City]) {
         let buildTreeOperation = BuildTreeOperation(response: cities)
-        buildTreeOperation.completionBlock = {
-            guard let tree = buildTreeOperation.tree else { return }
+        buildTreeOperation.completionBlock = { [weak self] in
+            guard let self = self,
+                  let tree = buildTreeOperation.tree
+                else { return }
             self.tree = tree
         }
         buildTreeQueue.addOperation(buildTreeOperation)
@@ -74,7 +78,9 @@ class CitiesInteractor: CitiesInteractorProtocol {
         // If the build tree operation is not finished yet we wait unit it finishes then add search operation
         if let buildTreeOperation = buildTreeQueue.operations.first as? BuildTreeOperation, !buildTreeOperation.isFinished {
             // update completion block for build tree operation
-            buildTreeOperation.completionBlock = {
+            buildTreeOperation.completionBlock = { [weak self] in
+                guard let self = self
+                    else { return }
                 self.tree = buildTreeOperation.tree
                 searchOperation.tree = buildTreeOperation.tree
                 self.searchQueue.addOperation(searchOperation)
@@ -88,7 +94,6 @@ class CitiesInteractor: CitiesInteractorProtocol {
                 searchOperation.searchCitiesLimit = .all
                 searchQueue.addOperation(searchOperation)
             }
-            
         }
         
         searchOperation.completionBlock = {
@@ -106,10 +111,4 @@ class CitiesInteractor: CitiesInteractorProtocol {
         searchQueue.addOperation(searchOperation)
     }
 
-}
-
-extension CitiesInteractor {
-    var isSearchReady: Bool {
-        return tree != nil
-    }
 }
