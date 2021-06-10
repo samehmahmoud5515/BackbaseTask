@@ -101,7 +101,7 @@ class CitiesInteractor: CitiesInteractorProtocol {
         }
     }
     
-    func getAllCities(completion: @escaping ([City]?) -> Void) {
+    private func getAllCities(completion: @escaping ([City]?) -> Void) {
         guard let tree = tree else { return }
         let searchOperation = SearchCitiesOperation(tree: tree, qurey: "")
         searchOperation.searchCitiesLimit = .all

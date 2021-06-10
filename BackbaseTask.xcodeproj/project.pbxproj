@@ -22,6 +22,7 @@
 		50977206266B898C00FAF4EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50977204266B898C00FAF4EC /* LaunchScreen.storyboard */; };
 		50977211266B898C00FAF4EC /* CitiesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50977210266B898C00FAF4EC /* CitiesViewControllerTests.swift */; };
 		5097721C266B898C00FAF4EC /* BackbaseTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5097721B266B898C00FAF4EC /* BackbaseTaskUITests.swift */; };
+		50A2FA172672981C0098EB8D /* CitiesInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A2FA162672981C0098EB8D /* CitiesInteractorTests.swift */; };
 		50C5FBEB266FE53A00E70B36 /* CitiesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FBEA266FE53A00E70B36 /* CitiesRouter.swift */; };
 		50C5FBF1266FE5B700E70B36 /* CitiesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FBF0266FE5B700E70B36 /* CitiesInteractor.swift */; };
 		50C5FBFA266FEA5700E70B36 /* CitiesTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FBF9266FEA5700E70B36 /* CitiesTree.swift */; };
@@ -78,6 +79,7 @@
 		50977217266B898C00FAF4EC /* BackbaseTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackbaseTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5097721B266B898C00FAF4EC /* BackbaseTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackbaseTaskUITests.swift; sourceTree = "<group>"; };
 		5097721D266B898C00FAF4EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50A2FA162672981C0098EB8D /* CitiesInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesInteractorTests.swift; sourceTree = "<group>"; };
 		50C5FBEA266FE53A00E70B36 /* CitiesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesRouter.swift; sourceTree = "<group>"; };
 		50C5FBF0266FE5B700E70B36 /* CitiesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesInteractor.swift; sourceTree = "<group>"; };
 		50C5FBF9266FEA5700E70B36 /* CitiesTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTree.swift; sourceTree = "<group>"; };
@@ -327,10 +329,8 @@
 		5097720F266B898C00FAF4EC /* BackbaseTaskTests */ = {
 			isa = PBXGroup;
 			children = (
-				50977210266B898C00FAF4EC /* CitiesViewControllerTests.swift */,
+				50A2F9FF2672978B0098EB8D /* Cities */,
 				50977212266B898C00FAF4EC /* Info.plist */,
-				50CB76E526717FB600E78F9A /* CitiesPresenterTest.swift */,
-				50CB76F926718A8200E78F9A /* CitiesInteractorMock.swift */,
 			);
 			path = BackbaseTaskTests;
 			sourceTree = "<group>";
@@ -342,6 +342,49 @@
 				5097721D266B898C00FAF4EC /* Info.plist */,
 			);
 			path = BackbaseTaskUITests;
+			sourceTree = "<group>";
+		};
+		50A2F9FF2672978B0098EB8D /* Cities */ = {
+			isa = PBXGroup;
+			children = (
+				50A2FA15267298000098EB8D /* Interactor */,
+				50A2FA00267297960098EB8D /* ViewController */,
+				50A2FA0E267297D40098EB8D /* Presenter */,
+				50A2FA07267297CE0098EB8D /* Mocks */,
+			);
+			path = Cities;
+			sourceTree = "<group>";
+		};
+		50A2FA00267297960098EB8D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				50977210266B898C00FAF4EC /* CitiesViewControllerTests.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		50A2FA07267297CE0098EB8D /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				50CB76F926718A8200E78F9A /* CitiesInteractorMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		50A2FA0E267297D40098EB8D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				50CB76E526717FB600E78F9A /* CitiesPresenterTest.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		50A2FA15267298000098EB8D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				50A2FA162672981C0098EB8D /* CitiesInteractorTests.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		50C5FBE9266FE52300E70B36 /* Router */ = {
@@ -595,6 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50977211266B898C00FAF4EC /* CitiesViewControllerTests.swift in Sources */,
+				50A2FA172672981C0098EB8D /* CitiesInteractorTests.swift in Sources */,
 				50CB76E626717FB600E78F9A /* CitiesPresenterTest.swift in Sources */,
 				50CB76FA26718A8200E78F9A /* CitiesInteractorMock.swift in Sources */,
 			);
