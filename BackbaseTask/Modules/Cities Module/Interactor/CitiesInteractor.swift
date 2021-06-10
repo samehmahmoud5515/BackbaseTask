@@ -15,24 +15,24 @@ class CitiesInteractor: CitiesInteractorProtocol {
         return tree != nil
     }
     
-    init(dataProvider: CitiesDataProviderProtocol) {
+    init(dataProvider: CitiesDataProviderProtocol = CitiesDataProvider()) {
         self.dataProvider = dataProvider
     }
     
-    lazy var loadCitiesQueue: OperationQueue = {
+    private lazy var loadCitiesQueue: OperationQueue = {
         var queue = OperationQueue()
         queue.qualityOfService = .userInitiated
         return queue
     }()
     
-    lazy var searchQueue: OperationQueue = {
+    private lazy var searchQueue: OperationQueue = {
         var queue = OperationQueue()
         queue.qualityOfService = .userInitiated
         queue.maxConcurrentOperationCount = 1
         return queue
     }()
     
-    lazy var buildTreeQueue: OperationQueue = {
+    private lazy var buildTreeQueue: OperationQueue = {
         var queue = OperationQueue()
         queue.qualityOfService = .userInitiated
         return queue

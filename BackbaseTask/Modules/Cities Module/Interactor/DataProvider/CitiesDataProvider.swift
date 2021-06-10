@@ -9,11 +9,18 @@ import Foundation
 
 class CitiesDataProvider: CitiesDataProviderProtocol {
     
-    var fileName: String = ""
+    var fileName: String {
+        return "cities"
+    }
+    
+    var bundle: Bundle {
+        return Bundle.main
+    }
     
     func loadCities() -> Data? {
         do {
-            guard let url = Bundle.main.url(forResource: fileName, withExtension: "json")
+            let path = getPath()
+            guard let url = URL(string: path)
                 else { return nil }
             return try Data(contentsOf: url, options: .uncached)
         } catch {
@@ -21,4 +28,9 @@ class CitiesDataProvider: CitiesDataProviderProtocol {
         return nil
     }
     
+    private func getPath() -> String {
+        return bundle.url(
+            forResource: fileName,
+            withExtension: "json")?.absoluteString ?? ""
+    }
 }

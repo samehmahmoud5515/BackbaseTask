@@ -44,6 +44,5 @@ protocol CityCellViewProtocol {
 }
 
 protocol CitiesDataProviderProtocol {
-    var fileName: String { get }
     func loadCities() -> Data?
 }
