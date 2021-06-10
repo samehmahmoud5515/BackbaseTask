@@ -11,18 +11,18 @@ class CitiesPresenter: CitiesPresenterProtocol {
         
     var cities: [City] = []
     
-    private weak var view: CitiesViewControllerProtocol?
-    private let interactor: CitiesInteractorProtocol
-    private let router: CitiesRouterProtocol
+    weak var view: CitiesViewControllerProtocol?
+    let interactor: CitiesInteractorProtocol
+    let router: CitiesRouterProtocol
 
     init(
         view: CitiesViewControllerProtocol,
         interactor: CitiesInteractorProtocol,
-        wireframe: CitiesRouterProtocol
+        router: CitiesRouterProtocol
     ) {
         self.view = view
         self.interactor = interactor
-        self.router = wireframe
+        self.router = router
     }
     
     // MARK: - Lifecycle
@@ -63,6 +63,17 @@ extension CitiesPresenter {
             DispatchQueue.main.async {
                 self.view?.reloadData()
                 self.view?.stopLoadingIndicator()
+            }
+        }
+    }
+    
+    func searchDidCanceled() {
+        interactor.searchAllCities(qurey: "") { cities in
+            guard let cities = cities
+                else { return }
+            self.cities = cities
+            DispatchQueue.main.async {
+                self.view?.reloadData()
             }
         }
     }

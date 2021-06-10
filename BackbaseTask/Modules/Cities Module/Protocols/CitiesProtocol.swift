@@ -19,6 +19,7 @@ protocol CitiesPresenterProtocol: CitiesPresenterDatasourceProtocol {
     func viewDidLoad()
     func viewWillAppear()
     func searchTextChanged(wihtQurey qurey: String)
+    func searchDidCanceled()
     
     func cityCell(selectedAt indexPath: IndexPath)
 }

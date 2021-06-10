@@ -14,7 +14,7 @@ class CitiesInteractor: CitiesInteractorProtocol {
         return tree != nil
     }
     
-    lazy var loadDataQueue: OperationQueue = {
+    lazy var loadCitiesQueue: OperationQueue = {
         var queue = OperationQueue()
         queue.qualityOfService = .userInitiated
         return queue
@@ -54,7 +54,7 @@ class CitiesInteractor: CitiesInteractorProtocol {
         }
 
         // Adding all the operation to the Queue
-        loadDataQueue.addOperations([loadCitiesOperation, sortCitiesOperation, sortLoadAdapterOperation], waitUntilFinished: false)
+        loadCitiesQueue.addOperations([loadCitiesOperation, sortCitiesOperation, sortLoadAdapterOperation], waitUntilFinished: false)
     }
     
     func buildTree(with cities: [City]) {

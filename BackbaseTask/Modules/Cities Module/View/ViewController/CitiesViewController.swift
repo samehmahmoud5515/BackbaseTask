@@ -72,7 +72,7 @@ extension CitiesViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        presenter.searchTextChanged(wihtQurey: "")
+        presenter.searchDidCanceled()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
