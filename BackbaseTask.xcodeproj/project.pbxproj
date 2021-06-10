@@ -20,7 +20,7 @@
 		509771FA266B898B00FAF4EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509771F9266B898B00FAF4EC /* AppDelegate.swift */; };
 		50977203266B898C00FAF4EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50977202266B898C00FAF4EC /* Assets.xcassets */; };
 		50977206266B898C00FAF4EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50977204266B898C00FAF4EC /* LaunchScreen.storyboard */; };
-		50977211266B898C00FAF4EC /* BackbaseTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50977210266B898C00FAF4EC /* BackbaseTaskTests.swift */; };
+		50977211266B898C00FAF4EC /* CitiesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50977210266B898C00FAF4EC /* CitiesViewControllerTests.swift */; };
 		5097721C266B898C00FAF4EC /* BackbaseTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5097721B266B898C00FAF4EC /* BackbaseTaskUITests.swift */; };
 		50C5FBEB266FE53A00E70B36 /* CitiesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FBEA266FE53A00E70B36 /* CitiesRouter.swift */; };
 		50C5FBF1266FE5B700E70B36 /* CitiesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FBF0266FE5B700E70B36 /* CitiesInteractor.swift */; };
@@ -35,6 +35,8 @@
 		50C5FC2526705B9B00E70B36 /* CityDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FC1F26705B9B00E70B36 /* CityDetailsRouter.swift */; };
 		50C5FC4B26705FD500E70B36 /* CityDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FC4926705FD500E70B36 /* CityDetailsViewController.swift */; };
 		50C5FC4C26705FD500E70B36 /* CityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50C5FC4A26705FD500E70B36 /* CityDetailsViewController.xib */; };
+		50CB76E626717FB600E78F9A /* CitiesPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB76E526717FB600E78F9A /* CitiesPresenterTest.swift */; };
+		50CB76FA26718A8200E78F9A /* CitiesInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CB76F926718A8200E78F9A /* CitiesInteractorMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +73,7 @@
 		50977205266B898C00FAF4EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50977207266B898C00FAF4EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5097720C266B898C00FAF4EC /* BackbaseTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackbaseTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		50977210266B898C00FAF4EC /* BackbaseTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackbaseTaskTests.swift; sourceTree = "<group>"; };
+		50977210266B898C00FAF4EC /* CitiesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewControllerTests.swift; sourceTree = "<group>"; };
 		50977212266B898C00FAF4EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50977217266B898C00FAF4EC /* BackbaseTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackbaseTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5097721B266B898C00FAF4EC /* BackbaseTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackbaseTaskUITests.swift; sourceTree = "<group>"; };
@@ -89,6 +91,8 @@
 		50C5FC1F26705B9B00E70B36 /* CityDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsRouter.swift; sourceTree = "<group>"; };
 		50C5FC4926705FD500E70B36 /* CityDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewController.swift; sourceTree = "<group>"; };
 		50C5FC4A26705FD500E70B36 /* CityDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityDetailsViewController.xib; sourceTree = "<group>"; };
+		50CB76E526717FB600E78F9A /* CitiesPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesPresenterTest.swift; sourceTree = "<group>"; };
+		50CB76F926718A8200E78F9A /* CitiesInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesInteractorMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,8 +327,10 @@
 		5097720F266B898C00FAF4EC /* BackbaseTaskTests */ = {
 			isa = PBXGroup;
 			children = (
-				50977210266B898C00FAF4EC /* BackbaseTaskTests.swift */,
+				50977210266B898C00FAF4EC /* CitiesViewControllerTests.swift */,
 				50977212266B898C00FAF4EC /* Info.plist */,
+				50CB76E526717FB600E78F9A /* CitiesPresenterTest.swift */,
+				50CB76F926718A8200E78F9A /* CitiesInteractorMock.swift */,
 			);
 			path = BackbaseTaskTests;
 			sourceTree = "<group>";
@@ -588,7 +594,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50977211266B898C00FAF4EC /* BackbaseTaskTests.swift in Sources */,
+				50977211266B898C00FAF4EC /* CitiesViewControllerTests.swift in Sources */,
+				50CB76E626717FB600E78F9A /* CitiesPresenterTest.swift in Sources */,
+				50CB76FA26718A8200E78F9A /* CitiesInteractorMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,7 +759,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PL8RT6LF9;
 				INFOPLIST_FILE = BackbaseTask/Configurations/Plist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -771,7 +779,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6PL8RT6LF9;
 				INFOPLIST_FILE = BackbaseTask/Configurations/Plist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
