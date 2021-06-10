@@ -15,7 +15,8 @@ class CitiesRouter {
         let view = CitiesViewController()
         viewController = view
 
-        let interactor = CitiesInteractor()
+        let dataProvider = CitiesDataProvider()
+        let interactor = CitiesInteractor(dataProvider: dataProvider)
         let presenter = CitiesPresenter(view: view, interactor: interactor, router: self)
         view.presenter = presenter
     }
