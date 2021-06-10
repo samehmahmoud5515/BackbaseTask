@@ -10,24 +10,29 @@ import Foundation
 class CitiesInteractor: CitiesInteractorProtocol {
     
     var tree: CitiesTree?
+    var dataProvider: CitiesDataProviderProtocol
     var isSearchReady: Bool {
         return tree != nil
     }
     
-    lazy var loadCitiesQueue: OperationQueue = {
+    init(dataProvider: CitiesDataProviderProtocol = CitiesDataProvider()) {
+        self.dataProvider = dataProvider
+    }
+    
+    private lazy var loadCitiesQueue: OperationQueue = {
         var queue = OperationQueue()
         queue.qualityOfService = .userInitiated
         return queue
     }()
     
-    lazy var searchQueue: OperationQueue = {
+    private lazy var searchQueue: OperationQueue = {
         var queue = OperationQueue()
         queue.qualityOfService = .userInitiated
         queue.maxConcurrentOperationCount = 1
         return queue
     }()
     
-    lazy var buildTreeQueue: OperationQueue = {
+    private lazy var buildTreeQueue: OperationQueue = {
         var queue = OperationQueue()
         queue.qualityOfService = .userInitiated
         return queue
@@ -35,7 +40,7 @@ class CitiesInteractor: CitiesInteractorProtocol {
     
     func loadAllCities(with completion: @escaping ([City]?) -> Void) {
         
-        let loadCitiesOperation = LoadCitiesOperation()
+        let loadCitiesOperation = LoadCitiesOperation(dataProvider: dataProvider)
         let sortCitiesOperation = SortCitiesOperation()
         let sortLoadAdapterOperation = BlockOperation() { [unowned sortCitiesOperation, unowned loadCitiesOperation] in
             sortCitiesOperation.cities = loadCitiesOperation.response

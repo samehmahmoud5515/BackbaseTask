@@ -42,3 +42,7 @@ protocol CitiesInteractorProtocol: AnyObject {
 protocol CityCellViewProtocol {
     func updateUI(with city: City)
 }
+
+protocol CitiesDataProviderProtocol {
+    func loadCities() -> Data?
+}

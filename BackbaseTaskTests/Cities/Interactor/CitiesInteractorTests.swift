@@ -11,11 +11,11 @@ import XCTest
 class CitiesInteractorTests: XCTestCase {
 
     var interactor: CitiesInteractor!
-    var cities: [City]?
 
     override func setUp() {
         super.setUp()
-        interactor = CitiesInteractor()
+        let dataProvider = CitiesDataProviderMock()
+        interactor = CitiesInteractor(dataProvider: dataProvider)
     }
 
     override func tearDown() {
@@ -23,50 +23,92 @@ class CitiesInteractorTests: XCTestCase {
     }
     
     func testSearchAllCitiesWithEmptyQuery() {
-        appendCities()
-        guard var cities = cities else { return }
-        cities.sort()
-        var loadedCities: [City]? = []
         let expectation = XCTestExpectation(description: "fetch did complete")
-        interactor.buildTree(with: cities)
-        interactor.searchAllCities(qurey: "") { citiesResults in
-            loadedCities = citiesResults
-            expectation.fulfill()
+        
+        var loadedCities: [City] = []
+        interactor.loadAllCities { cities in
+            self.interactor.buildTree(with: cities ?? [])
+            self.interactor.searchAllCities(qurey: "") { citiesResults in
+                loadedCities = citiesResults ?? []
+                expectation.fulfill()
+            }
         }
+        
         wait(for: [expectation], timeout: 2)
         
-        XCTAssertEqual(loadedCities?.count, 4)
+        XCTAssertEqual(loadedCities.count, 359)
         XCTAssertTrue(interactor.isSearchReady)
-        XCTAssertEqual(loadedCities?.first?.name, "Amsterdam")
+        XCTAssertEqual(loadedCities.first?.name, "Alfortville")
+    }
+    
+    func testSearchAllCitiesWithSimpleQuery() {
+        let expectation = XCTestExpectation(description: "fetch did complete")
+        
+        var loadedCities: [City] = []
+        interactor.loadAllCities { cities in
+            self.interactor.buildTree(with: cities ?? [])
+            self.interactor.searchAllCities(qurey: "M") { citiesResults in
+                loadedCities = citiesResults ?? []
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 2)
+        
+        XCTAssertEqual(loadedCities.count, 31)
+        XCTAssertTrue(interactor.isSearchReady)
+        XCTAssertEqual(loadedCities.first?.name, "Maesteg")
     }
     
     func testSearchAllCitiesWithQuery() {
-        appendCities()
-        guard var cities = cities else { return }
-        cities.sort()
-        var loadedCities: [City]? = []
         let expectation = XCTestExpectation(description: "fetch did complete")
-        interactor.buildTree(with: cities)
-        interactor.searchAllCities(qurey: "Cairo") { citiesResults in
-            loadedCities = citiesResults
+        
+        var loadedCities: [City] = []
+        interactor.loadAllCities { cities in
+            self.interactor.buildTree(with: cities ?? [])
+            self.interactor.searchAllCities(qurey: "MAN") { citiesResults in
+                loadedCities = citiesResults ?? []
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 2)
+        
+        XCTAssertEqual(loadedCities.count, 2)
+        XCTAssertTrue(interactor.isSearchReady)
+        XCTAssertEqual(loadedCities.first?.name, "Mangai")
+    }
+    
+    
+    func testSearchAllCitiesWithQueryEmptyResults() {
+        let expectation = XCTestExpectation(description: "fetch did complete")
+        
+        var loadedCities: [City] = []
+        interactor.loadAllCities { cities in
+            self.interactor.buildTree(with: cities ?? [])
+            self.interactor.searchAllCities(qurey: "fasdfdsafads") { citiesResults in
+                loadedCities = citiesResults ?? []
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 2)
+        
+        XCTAssertEqual(loadedCities.count, 0)
+        XCTAssertTrue(interactor.isSearchReady)
+    }
+    
+    func testLoadAllCities() {
+
+        var loadedCities: [City] = []
+        let expectation = XCTestExpectation(description: "fetch did complete")
+        interactor.loadAllCities { cities in
+            loadedCities = cities ?? []
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 2)
         
-        XCTAssertEqual(loadedCities?.count, 1)
-        XCTAssertTrue(interactor.isSearchReady)
-        XCTAssertEqual(loadedCities?.first?.name, "Cairo")
-    }
-
-}
-
-extension CitiesInteractorTests {
-    func appendCities() {
-        var cities: [City] = []
-        cities.append(City(country: "UK", name: "London", id: 123, coord: City.Coordinate(lon: 0.0, lat: 0.0)))
-        cities.append(City(country: "EG", name: "Cairo", id: 1234, coord: City.Coordinate(lon: 0.0, lat: 0.0)))
-        cities.append(City(country: "US", name: "Dallas", id: 1234, coord: City.Coordinate(lon: 0.0, lat: 0.0)))
-        cities.append(City(country: "NL", name: "Amsterdam", id: 1234, coord: City.Coordinate(lon: 0.0, lat: 0.0)))
-        self.cities = cities
+        XCTAssertEqual(loadedCities.count, 359)
+        XCTAssertEqual(loadedCities.first?.name, "Alfortville")
     }
 }

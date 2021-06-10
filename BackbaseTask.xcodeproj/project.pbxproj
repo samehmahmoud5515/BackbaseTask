@@ -23,6 +23,10 @@
 		50977211266B898C00FAF4EC /* CitiesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50977210266B898C00FAF4EC /* CitiesViewControllerTests.swift */; };
 		5097721C266B898C00FAF4EC /* BackbaseTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5097721B266B898C00FAF4EC /* BackbaseTaskUITests.swift */; };
 		50A2FA172672981C0098EB8D /* CitiesInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A2FA162672981C0098EB8D /* CitiesInteractorTests.swift */; };
+		50A2FA1F26729E730098EB8D /* CitiesDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A2FA1E26729E730098EB8D /* CitiesDataProvider.swift */; };
+		50A2FA2B2672A0A90098EB8D /* CitiesDataProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A2FA2A2672A0A90098EB8D /* CitiesDataProviderMock.swift */; };
+		50A2FA302672A0D40098EB8D /* cities_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 50A2FA2F2672A0D40098EB8D /* cities_mock.json */; };
+		50A2FA3D2672A7770098EB8D /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A2FA3C2672A7770098EB8D /* Bundle.swift */; };
 		50C5FBEB266FE53A00E70B36 /* CitiesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FBEA266FE53A00E70B36 /* CitiesRouter.swift */; };
 		50C5FBF1266FE5B700E70B36 /* CitiesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FBF0266FE5B700E70B36 /* CitiesInteractor.swift */; };
 		50C5FBFA266FEA5700E70B36 /* CitiesTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FBF9266FEA5700E70B36 /* CitiesTree.swift */; };
@@ -80,6 +84,10 @@
 		5097721B266B898C00FAF4EC /* BackbaseTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackbaseTaskUITests.swift; sourceTree = "<group>"; };
 		5097721D266B898C00FAF4EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50A2FA162672981C0098EB8D /* CitiesInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesInteractorTests.swift; sourceTree = "<group>"; };
+		50A2FA1E26729E730098EB8D /* CitiesDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesDataProvider.swift; sourceTree = "<group>"; };
+		50A2FA2A2672A0A90098EB8D /* CitiesDataProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesDataProviderMock.swift; sourceTree = "<group>"; };
+		50A2FA2F2672A0D40098EB8D /* cities_mock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities_mock.json; sourceTree = "<group>"; };
+		50A2FA3C2672A7770098EB8D /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		50C5FBEA266FE53A00E70B36 /* CitiesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesRouter.swift; sourceTree = "<group>"; };
 		50C5FBF0266FE5B700E70B36 /* CitiesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesInteractor.swift; sourceTree = "<group>"; };
 		50C5FBF9266FEA5700E70B36 /* CitiesTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTree.swift; sourceTree = "<group>"; };
@@ -329,6 +337,7 @@
 		5097720F266B898C00FAF4EC /* BackbaseTaskTests */ = {
 			isa = PBXGroup;
 			children = (
+				50A2FA3B2672A7670098EB8D /* Helpers */,
 				50A2F9FF2672978B0098EB8D /* Cities */,
 				50977212266B898C00FAF4EC /* Info.plist */,
 			);
@@ -366,7 +375,9 @@
 		50A2FA07267297CE0098EB8D /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				50A2FA2F2672A0D40098EB8D /* cities_mock.json */,
 				50CB76F926718A8200E78F9A /* CitiesInteractorMock.swift */,
+				50A2FA2A2672A0A90098EB8D /* CitiesDataProviderMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -387,6 +398,30 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
+		50A2FA262672A0220098EB8D /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				50A2FA1E26729E730098EB8D /* CitiesDataProvider.swift */,
+			);
+			path = DataProvider;
+			sourceTree = "<group>";
+		};
+		50A2FA3A2672A7600098EB8D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				50A2FA3C2672A7770098EB8D /* Bundle.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		50A2FA3B2672A7670098EB8D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				50A2FA3A2672A7600098EB8D /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		50C5FBE9266FE52300E70B36 /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +436,7 @@
 				50C5FBF0266FE5B700E70B36 /* CitiesInteractor.swift */,
 				50C5FBFE266FEB9900E70B36 /* Operations */,
 				50C5FBF8266FEA2D00E70B36 /* CitiesTree */,
+				50A2FA262672A0220098EB8D /* DataProvider */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -593,6 +629,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50A2FA302672A0D40098EB8D /* cities_mock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +649,7 @@
 			files = (
 				509771FA266B898B00FAF4EC /* AppDelegate.swift in Sources */,
 				5086265C266F891C00AAB76E /* String.swift in Sources */,
+				50A2FA1F26729E730098EB8D /* CitiesDataProvider.swift in Sources */,
 				50C5FBEB266FE53A00E70B36 /* CitiesRouter.swift in Sources */,
 				50611BC3266D9C1300581EDA /* CitiesPresenter.swift in Sources */,
 				50C5FC00266FEBA400E70B36 /* BuildTreeOperation.swift in Sources */,
@@ -638,8 +676,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				50977211266B898C00FAF4EC /* CitiesViewControllerTests.swift in Sources */,
+				50A2FA3D2672A7770098EB8D /* Bundle.swift in Sources */,
 				50A2FA172672981C0098EB8D /* CitiesInteractorTests.swift in Sources */,
 				50CB76E626717FB600E78F9A /* CitiesPresenterTest.swift in Sources */,
+				50A2FA2B2672A0A90098EB8D /* CitiesDataProviderMock.swift in Sources */,
 				50CB76FA26718A8200E78F9A /* CitiesInteractorMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
