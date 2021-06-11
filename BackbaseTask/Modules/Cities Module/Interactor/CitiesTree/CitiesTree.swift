@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// We used prefix tree (Trie tree) sothat searching won't take more than O(log(n))
+///
 class CityTreeNode {
     var key: String = ""
     var city: [City] = []
@@ -14,7 +16,7 @@ class CityTreeNode {
 }
 
 class CitiesTree {
-    //
+    // Root of the tree
     var root = CityTreeNode()
     
     func append(city: City) {
@@ -60,15 +62,7 @@ class CitiesTree {
     }
     
     func getAllCities() -> [City] {
-        var cities = [City]()
-       
-        cities.append(contentsOf: root.city)
-      
-        for child in root.children {
-            cities.append(contentsOf: getCities(for: child))
-        }
-        
-        return cities
+        getCities(for: root)
     }
     
     func getFirstCities(count: Int) -> [City] {
