@@ -30,7 +30,6 @@
 		50C5FBEB266FE53A00E70B36 /* CitiesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FBEA266FE53A00E70B36 /* CitiesRouter.swift */; };
 		50C5FBF1266FE5B700E70B36 /* CitiesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FBF0266FE5B700E70B36 /* CitiesInteractor.swift */; };
 		50C5FBFA266FEA5700E70B36 /* CitiesTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FBF9266FEA5700E70B36 /* CitiesTree.swift */; };
-		50C5FC00266FEBA400E70B36 /* BuildTreeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FBFF266FEBA400E70B36 /* BuildTreeOperation.swift */; };
 		50C5FC05266FEBB600E70B36 /* LoadCitiesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FC04266FEBB600E70B36 /* LoadCitiesOperation.swift */; };
 		50C5FC10266FF83C00E70B36 /* SortCitiesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FC0F266FF83C00E70B36 /* SortCitiesOperation.swift */; };
 		50C5FC152670258E00E70B36 /* SearchCitiesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5FC142670258E00E70B36 /* SearchCitiesOperation.swift */; };
@@ -91,7 +90,6 @@
 		50C5FBEA266FE53A00E70B36 /* CitiesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesRouter.swift; sourceTree = "<group>"; };
 		50C5FBF0266FE5B700E70B36 /* CitiesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesInteractor.swift; sourceTree = "<group>"; };
 		50C5FBF9266FEA5700E70B36 /* CitiesTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTree.swift; sourceTree = "<group>"; };
-		50C5FBFF266FEBA400E70B36 /* BuildTreeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTreeOperation.swift; sourceTree = "<group>"; };
 		50C5FC04266FEBB600E70B36 /* LoadCitiesOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCitiesOperation.swift; sourceTree = "<group>"; };
 		50C5FC0F266FF83C00E70B36 /* SortCitiesOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCitiesOperation.swift; sourceTree = "<group>"; };
 		50C5FC142670258E00E70B36 /* SearchCitiesOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCitiesOperation.swift; sourceTree = "<group>"; };
@@ -452,7 +450,6 @@
 		50C5FBFE266FEB9900E70B36 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				50C5FBFF266FEBA400E70B36 /* BuildTreeOperation.swift */,
 				50C5FC04266FEBB600E70B36 /* LoadCitiesOperation.swift */,
 				50C5FC0F266FF83C00E70B36 /* SortCitiesOperation.swift */,
 				50C5FC142670258E00E70B36 /* SearchCitiesOperation.swift */,
@@ -652,7 +649,6 @@
 				50A2FA1F26729E730098EB8D /* CitiesDataProvider.swift in Sources */,
 				50C5FBEB266FE53A00E70B36 /* CitiesRouter.swift in Sources */,
 				50611BC3266D9C1300581EDA /* CitiesPresenter.swift in Sources */,
-				50C5FC00266FEBA400E70B36 /* BuildTreeOperation.swift in Sources */,
 				50C5FC2526705B9B00E70B36 /* CityDetailsRouter.swift in Sources */,
 				50C5FC05266FEBB600E70B36 /* LoadCitiesOperation.swift in Sources */,
 				5094786A266E91F700AE018C /* CityTableViewCell.swift in Sources */,

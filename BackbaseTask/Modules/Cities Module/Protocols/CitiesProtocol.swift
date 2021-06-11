@@ -34,7 +34,6 @@ protocol CitiesRouterProtocol: AnyObject {
 }
 
 protocol CitiesInteractorProtocol: AnyObject {
-    var isSearchReady: Bool { get }
     func loadAllCities(with completion: @escaping ([City]?) -> Void)
     func searchAllCities(qurey: String, completion: @escaping ([City]?) -> Void)
 }

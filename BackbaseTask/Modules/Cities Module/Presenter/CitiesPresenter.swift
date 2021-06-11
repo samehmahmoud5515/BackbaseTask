@@ -9,7 +9,7 @@ import Foundation
 
 class CitiesPresenter: CitiesPresenterProtocol {
         
-    var cities: [City] = []
+    var filtedCities: [City] = []
     
     weak var view: CitiesViewControllerProtocol?
     let interactor: CitiesInteractorProtocol
@@ -42,8 +42,7 @@ extension CitiesPresenter {
         interactor.loadAllCities { [weak self] cities in
             guard let cities = cities
                 else { return }
-            self?.cities = cities
-            
+            self?.filtedCities = cities
             // Reload Data in MainThread
             DispatchQueue.main.async {
                 self?.view?.stopLoadingIndicator()
@@ -53,13 +52,10 @@ extension CitiesPresenter {
     }
     
     func searchTextChanged(wihtQurey qurey: String) {
-        if !interactor.isSearchReady {
-            view?.startLoadingIndicator()
-        }
         interactor.searchAllCities(qurey: qurey) { cities in
             guard let cities = cities
                 else { return }
-            self.cities = cities
+            self.filtedCities = cities
             DispatchQueue.main.async {
                 self.view?.reloadData()
                 self.view?.stopLoadingIndicator()
@@ -71,7 +67,7 @@ extension CitiesPresenter {
         interactor.searchAllCities(qurey: "") { cities in
             guard let cities = cities
                 else { return }
-            self.cities = cities
+            self.filtedCities = cities
             DispatchQueue.main.async {
                 self.view?.reloadData()
             }
@@ -81,11 +77,11 @@ extension CitiesPresenter {
 
 extension CitiesPresenter {
     var citiesCount: Int {
-        return cities.count
+        return filtedCities.count
     }
     
     func configure(cityCell cell: CityCellViewProtocol, atIndexPath indexPath: IndexPath) {
-        let city = cities[indexPath.row]
+        let city = filtedCities[indexPath.row]
         cell.updateUI(with: city)
     }
 }
@@ -93,7 +89,7 @@ extension CitiesPresenter {
 // MARK: - Navigation
 extension CitiesPresenter {
     func cityCell(selectedAt indexPath: IndexPath) {
-        let city = cities[indexPath.row]
+        let city = filtedCities[indexPath.row]
         router.goTo(route: .cityDetails(city: city))
     }
 }
