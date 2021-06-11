@@ -40,6 +40,8 @@ I tried to make searching's performance good as possible. First I build prfix tr
 
 then I made searching which works with **DFS** take advantage of this and returning the cities for the node.
 
+** Note that building tree takes 14 seconds **
+
 
 ### Unit testing:
 
