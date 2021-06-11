@@ -31,7 +31,7 @@ the operation queue is building the tree operation without blocking the ui and w
 
 On the other hand if the user did type in search bar then we checked if the tree is ready if not then we wait for the tree to be finished and afterwards we will 
 
-see the search take action and now the tableView is filtered by the search word the user types. ** Note that building tree happens only once after the app opened**
+see the search take action and now the tableView is filtered by the search word the user types. **Note that building tree happens only once after the app opened**
 
 
 ### Algorithm for searhing:
@@ -40,7 +40,7 @@ I tried to make searching's performance good as possible. First I build prfix tr
 
 then I made searching which works with **DFS** take advantage of this and returning the cities for the node.
 
-** Note that building tree takes 14 seconds **
+**Note that building tree takes 14 seconds**
 
 
 ### Unit testing:
