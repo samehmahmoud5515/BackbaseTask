@@ -17,14 +17,12 @@ final class LoadCitiesOperation: Operation {
     }
 
     override func main() {
-        print("LoadCitiesOperation Started \(Date())")
         guard !isCancelled else { return }
 
         guard let citiesData = dataProvider.loadCities(),
               let citiesResponse = decodeJson(data: citiesData)
             else { return }
         response = citiesResponse
-        print("LoadCitiesOperation Done \(Date())")
     }
     
     private func decodeJson(data: Data) -> CitiesResponse? {

@@ -20,8 +20,8 @@ final class SearchCitiesOperation: Operation {
     }
 
     override func main() {
+        guard !isCancelled else { return }
         guard let tree = tree else { return }
-        print("SearchCitiesOperation Started \(Date())")
         switch (qurey.isEmpty, searchCitiesLimit) {
         case (true, .all):
             cities = tree.getAllCities()
@@ -30,7 +30,6 @@ final class SearchCitiesOperation: Operation {
         case (false, _):
             cities = tree.getCities(withPrefix: qurey)
         }
-        print("SearchCitiesOperation Done \(Date())")
     }
 }
 

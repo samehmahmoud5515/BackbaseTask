@@ -12,9 +12,8 @@ final class SortCitiesOperation: Operation {
     var cities: CitiesResponse?
 
     override func main() {
+        guard !isCancelled else { return }
         guard let cities = cities else { return }
-        print("SortCitiesOperation Started \(Date())")
         self.cities = cities.sorted()
-        print("SortCitiesOperation Done \(Date())")
     }
 }

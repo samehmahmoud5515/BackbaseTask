@@ -17,9 +17,8 @@ final class BuildTreeOperation: Operation {
     }
 
     override func main() {
-        print("BuildTreeOperation Started \(Date())")
+        guard !isCancelled else { return }
         buildCitiesTree(with: response)
-        print("BuildTreeOperation Done \(Date())")
     }
     
     fileprivate func buildCitiesTree(with response: CitiesResponse) {
