@@ -8,7 +8,9 @@ Also I made unit testing for Cities Module.
 
 Note: I used no third party libraries.
 
-## How I solved the challenge
+
+## How I solved the challenge:
+
 
 ### I used operation queues and operations to optimize the peformace and responsiveness of the app in:
 
